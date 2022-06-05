@@ -1,9 +1,9 @@
 import { memo, VFC } from "react";
 
-export const Home: VFC = memo(() => {
+export const Page404: VFC = memo(() => {
   return (
     <>
-      <p>ホームページ</p>
+      <p>404ページ</p>
     </>
   );
 });

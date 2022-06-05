@@ -1,11 +1,16 @@
-import "./styles.css";
+import { ChakraProvider } from "@chakra-ui/react";
 import { VFC } from "react";
+import { BrowserRouter } from "react-router-dom";
+
+import { theme } from "./theme/theme";
+import { Router } from "./router/Router";
 
 export const App: VFC = () => {
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    <ChakraProvider theme={theme}>
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
+    </ChakraProvider>
   );
 };

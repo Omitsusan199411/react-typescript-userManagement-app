@@ -1,6 +1,6 @@
-import React, { memo, VFC } from "react";
+import { memo, VFC } from "react";
 
-export const UserManagemnet: VFC = memo(() => {
+export const UserManagement: VFC = memo(() => {
   return (
     <>
       <p>ユーザー管理ページ</p>

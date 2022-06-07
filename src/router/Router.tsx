@@ -6,6 +6,8 @@ import { Page404 } from "../components/pages/Page404";
 import { homeRoutes } from "./HomeRoute";
 import { HeaderLayout } from "../components/templates/HeaderLayout";
 
+// /home以下のページについては、HeaderLayoutを読み込み、homeRoutesファイルに作成された各コンポーネントでHeaderを表示させる
+
 export const Router: VFC = memo(() => {
   return (
     <Switch>

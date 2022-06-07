@@ -10,6 +10,9 @@ import {
 type Props = {
   onClose: () => void;
   isOpen: boolean;
+  onClickHome: () => void;
+  onClickHomeUserManagement: () => void;
+  onClickHomeSetting: () => void;
 };
 
 export const MenuDrawer: VFC<Props> = memo((props) => {

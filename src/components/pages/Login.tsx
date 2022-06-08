@@ -6,7 +6,7 @@ import { useAuth } from "../../hooks/useAuth";
 
 export const Login: VFC = memo(() => {
   const [userId, setUserId] = useState("");
-  const { login, Loading } = useAuth();
+  const { login, loading } = useAuth();
 
   const onChangeUserId = (event: ChangeEvent<HTMLInputElement>) =>
     setUserId(event.target.value);
@@ -26,7 +26,13 @@ export const Login: VFC = memo(() => {
             value={userId}
             onChange={onChangeUserId}
           />
-          <PrimaryButton onClick={onClickLogin}>ログイン</PrimaryButton>
+          <PrimaryButton
+            disabled={userId === ""}
+            loading={loading}
+            onClick={onClickLogin}
+          >
+            ログイン
+          </PrimaryButton>
         </Stack>
       </Box>
     </Flex>

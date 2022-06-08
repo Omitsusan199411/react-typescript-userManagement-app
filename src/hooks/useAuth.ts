@@ -8,7 +8,7 @@ import { User } from "../types/api/User";
 // finallly()を使う場合は、tsconfigの中のesのバージョンをes2018に変更すること
 export const useAuth = () => {
   const history = useHistory();
-  const [Loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const login = useCallback((id: string) => {
     setLoading(true);
@@ -26,5 +26,5 @@ export const useAuth = () => {
         setLoading(false);
       });
   }, []);
-  return { login, Loading };
+  return { login, loading };
 };

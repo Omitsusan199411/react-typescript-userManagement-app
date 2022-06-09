@@ -8,6 +8,7 @@ export const UserManagement: VFC = memo(() => {
   const { getUsers, users, loading } = useAllUsers();
 
   // 初期レンダリングのときのみユーザー情報を表示させたい
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => getUsers(), []);
   return (
     <>

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { User } from "../types/api/User";
 import { useMessage } from "./useMessage";
 
-// finallly()を使う場合は、tsconfigの中のesのバージョンをes2018に変更すること
+// finallly()を使う場合は、tsconfigの中のesのバージョンをes2018などに変更すること
 export const useAuth = () => {
   const history = useHistory();
   const { showMessage } = useMessage();

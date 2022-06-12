@@ -10,13 +10,22 @@ import {
 import { UserCard } from "../organisms/user/UserCard";
 import { useAllUsers } from "../../hooks/useAllUsers";
 import { UserDetailModal } from "../organisms/user/UserDetailModal";
+import { useSelectUser } from "../../hooks/useSelectUser";
 
 export const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { getUsers, users, loading } = useAllUsers();
+  const { onSelectUser, selectedUser } = useSelectUser();
+  console.log(selectedUser);
 
   // propsで渡す関数は、ページが読み込まれる度に再レンダリングされるのでuseCallbackを使う
-  const onClickUser = useCallback(() => onOpen(), [onOpen]);
+  const onClickUser = useCallback(
+    (id: number) => {
+      onSelectUser({ id, users });
+      onOpen();
+    },
+    [onSelectUser, onOpen, users]
+  );
 
   // 初期レンダリングのときのみユーザー情報を表示させたい
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -32,6 +41,7 @@ export const UserManagement: VFC = memo(() => {
           {users.map((user) => (
             <WrapItem key={user.id}>
               <UserCard
+                id={user.id}
                 imageUrl="https://source.unsplash.com/random"
                 userName={user.username}
                 fullName={user.name}

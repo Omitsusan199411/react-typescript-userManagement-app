@@ -4,21 +4,12 @@ import {
   WrapItem,
   Spinner,
   Center,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  useDisclosure,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  Stack,
-  FormControl,
-  FormLabel,
-  Input
+  useDisclosure
 } from "@chakra-ui/react";
 
 import { UserCard } from "../organisms/user/UserCard";
 import { useAllUsers } from "../../hooks/useAllUsers";
+import { UserDetailModal } from "../organisms/user/UserDetailModal";
 
 export const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -50,33 +41,7 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>ユーザー詳細</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Stack>
-              <FormControl>
-                <FormLabel>名前</FormLabel>
-                <Input value="まこと" isReadOnly />
-              </FormControl>
-              <FormControl>
-                <FormLabel>フルネーム</FormLabel>
-                <Input value="岡田　誠" isReadOnly />
-              </FormControl>
-              <FormControl>
-                <FormLabel>Mail</FormLabel>
-                <Input value="12345@example.com" isReadOnly />
-              </FormControl>
-              <FormControl>
-                <FormLabel>TEL</FormLabel>
-                <Input value="000-222-3333" isReadOnly />
-              </FormControl>
-            </Stack>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <UserDetailModal isOpen={isOpen} onClose={onClose} />
     </>
   );
 });

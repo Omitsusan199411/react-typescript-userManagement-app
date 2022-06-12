@@ -16,15 +16,13 @@ export const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { getUsers, users, loading } = useAllUsers();
   const { onSelectUser, selectedUser } = useSelectUser();
-  console.log(selectedUser);
 
   // propsで渡す関数は、ページが読み込まれる度に再レンダリングされるのでuseCallbackを使う
   const onClickUser = useCallback(
     (id: number) => {
-      onSelectUser({ id, users });
-      onOpen();
+      onSelectUser({ id, users, onOpen });
     },
-    [onSelectUser, onOpen, users]
+    [onSelectUser, users, onOpen]
   );
 
   // 初期レンダリングのときのみユーザー情報を表示させたい
@@ -51,7 +49,7 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal isOpen={isOpen} onClose={onClose} />
+      <UserDetailModal isOpen={isOpen} onClose={onClose} user={selectedUser} />
     </>
   );
 });

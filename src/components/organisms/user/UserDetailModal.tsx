@@ -1,4 +1,4 @@
-import { memo, VFC, useState, useEffect } from "react";
+import { memo, VFC, useState, useEffect, ChangeEvent } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -25,10 +25,10 @@ type Props = {
 
 export const UserDetailModal: VFC<Props> = memo((props) => {
   const { isOpen, onClose, user, isAdmin = false } = props;
-  const [username, setUsername] = useState();
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
+  const [username, setUsername] = useState<string>();
+  const [name, setName] = useState<string>();
+  const [email, setEmail] = useState<string>();
+  const [phone, setPhone] = useState<string>();
 
   useEffect(() => {
     setUsername(user?.username ?? "");

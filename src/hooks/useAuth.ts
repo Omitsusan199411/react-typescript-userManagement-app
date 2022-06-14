@@ -22,6 +22,7 @@ export const useAuth = () => {
           if (res.data) {
             const isAdmin = res.data.id === 10 ? true : false;
             showMessage({ title: "ログインしました", status: "success" });
+            // userオブジェクトの中にisAdminオブジェクトを追加
             setLoginUser({ ...res.data, isAdmin });
             history.push("/home");
           } else {
